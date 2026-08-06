@@ -43,109 +43,169 @@
 
                 </p>
 
-                <form>
+              @if (session()->has('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
-                    <div class="form-grid">
+<form wire:submit.prevent="submit">
 
-                        <div class="form-group">
+    <div class="form-grid">
 
-                            <input type="text"
-                                   placeholder="Full Name">
+        <div class="form-group">
 
-                        </div>
+            <input
+                type="text"
+                wire:model.defer="full_name"
+                placeholder="Full Name">
 
-                        <div class="form-group">
+            @error('full_name')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
 
-                            <input type="email"
-                                   placeholder="Email Address">
+        </div>
 
-                        </div>
+        <div class="form-group">
 
-                        <div class="form-group">
+            <input
+                type="email"
+                wire:model.defer="email"
+                placeholder="Email Address">
 
-                            <input type="tel"
-                                   placeholder="Phone Number">
+            @error('email')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
 
-                        </div>
+        </div>
 
-                        <div class="form-group">
+        <div class="form-group">
 
-                            <select>
+            <input
+                type="tel"
+                wire:model.defer="phone"
+                placeholder="Phone Number">
 
-                                <option>Select Department</option>
+            @error('phone')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
 
-                                <option>Cardiology</option>
+        </div>
 
-                                <option>Orthopaedics</option>
+        <div class="form-group">
 
-                                <option>Paediatrics</option>
+            <select wire:model.defer="department">
 
-                                <option>Neurology</option>
+                <option value="">Select Department</option>
 
-                                <option>General Surgery</option>
+                <option value="Cardiology">Cardiology</option>
 
-                            </select>
+                <option value="Orthopaedics">Orthopaedics</option>
 
-                        </div>
+                <option value="Paediatrics">Paediatrics</option>
 
-                        <div class="form-group">
+                <option value="Neurology">Neurology</option>
 
-                            <select>
+                <option value="General Surgery">General Surgery</option>
 
-                                <option>Select Doctor</option>
+            </select>
 
-                                <option>Dr. John Asemota</option>
+            @error('department')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
 
-                                <option>Dr. Grace Omoregie</option>
+        </div>
 
-                                <option>Dr. Faith Osagie</option>
+        <!--
+        <div class="form-group">
 
-                            </select>
+            <select>
 
-                        </div>
+                <option>Select Doctor</option>
 
-                        <div class="form-group">
+                <option>Dr. John Asemota</option>
 
-                            <input type="date">
+                <option>Dr. Grace Omoregie</option>
 
-                        </div>
+                <option>Dr. Faith Osagie</option>
 
-                        <div class="form-group">
+            </select>
 
-                            <input type="time">
+        </div>
+        -->
 
-                        </div>
+        <div class="form-group">
 
-                        <div class="form-group">
+            <input
+                type="date"
+                wire:model.defer="appointment_date">
 
-                            <select>
+            @error('appointment_date')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
 
-                                <option>Consultation Type</option>
+        </div>
 
-                                <option>General Consultation</option>
+        <div class="form-group">
 
-                                <option>Specialist Consultation</option>
+            <input
+                type="time"
+                wire:model.defer="appointment_time">
 
-                                <option>Emergency Visit</option>
+            @error('appointment_time')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
 
-                            </select>
+        </div>
 
-                        </div>
+        <div class="form-group">
 
-                    </div>
+            <select wire:model.defer="consultation_type">
 
-                    <textarea rows="6"
-                              placeholder="Additional Information"></textarea>
+                <option value="">Consultation Type</option>
 
-                    <button type="submit">
+                <option value="General Consultation">General Consultation</option>
 
-                        <i class="fa-solid fa-calendar-check"></i>
+                <option value="Specialist Consultation">Specialist Consultation</option>
 
-                        Book Appointment
+                <option value="Emergency Visit">Emergency Visit</option>
 
-                    </button>
+            </select>
 
-                </form>
+            @error('consultation_type')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+
+        </div>
+
+    </div>
+
+    <textarea
+        rows="6"
+        wire:model.defer="additional_information"
+        placeholder="Additional Information"></textarea>
+
+    @error('additional_information')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+
+    <button
+        type="submit"
+        wire:loading.attr="disabled">
+
+        <span wire:loading.remove>
+            <i class="fa-solid fa-calendar-check"></i>
+            Book Appointment
+        </span>
+
+        <span wire:loading>
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            Booking...
+        </span>
+
+    </button>
+
+</form>
 
             </div>
 

@@ -91,27 +91,65 @@
 
             <div class="contact-form">
 
-                <form>
+                <form wire:submit.prevent="sendMessage">
 
-                    <input type="text"
-                           placeholder="Full Name">
+    @if(session()->has('contact_success'))
+        <div class="alert alert-success">
+            {{ session('contact_success') }}
+        </div>
+    @endif
 
-                    <input type="email"
-                           placeholder="Email Address">
+    <input
+        type="text"
+        wire:model.defer="contact_name"
+        placeholder="Full Name">
 
-                    <input type="text"
-                           placeholder="Subject">
+    @error('contact_name')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
 
-                    <textarea rows="6"
-                              placeholder="Message"></textarea>
+    <input
+        type="email"
+        wire:model.defer="contact_email"
+        placeholder="Email Address">
 
-                    <button>
+    @error('contact_email')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
 
-                        Send Message
+    <input
+        type="text"
+        wire:model.defer="contact_subject"
+        placeholder="Subject">
 
-                    </button>
+    @error('contact_subject')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
 
-                </form>
+    <textarea
+        rows="6"
+        wire:model.defer="contact_message"
+        placeholder="Message"></textarea>
+
+    @error('contact_message')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+
+    <button
+        type="submit"
+        wire:loading.attr="disabled">
+
+        <span wire:loading.remove>
+            Send Message
+        </span>
+
+        <span wire:loading>
+            Sending...
+        </span>
+
+    </button>
+
+</form>
 
             </div>
 
