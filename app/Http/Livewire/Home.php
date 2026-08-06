@@ -109,8 +109,7 @@ public function sendMessage()
     ]);
 
     Mail::raw(
-"New Contact Message
-
+"
 Name: {$this->contact_name}
 
 Email: {$this->contact_email}
@@ -118,13 +117,12 @@ Email: {$this->contact_email}
 Subject: {$this->contact_subject}
 
 Message:
-
 {$this->contact_message}",
         function ($mail) {
 
             $mail->to(env('CONTACT_INFO_MAIL'))
                  ->replyTo($this->contact_email, $this->contact_name)
-                 ->subject('Website Contact: ' . $this->contact_subject);
+                 ->subject( $this->contact_subject);
         }
     );
 

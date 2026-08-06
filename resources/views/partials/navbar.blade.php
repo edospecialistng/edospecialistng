@@ -27,7 +27,7 @@
 
                 <li><a href="#doctors">Doctors</a></li>
 
-                <li><a href="#appointment">Appointment</a></li>
+                <!-- <li><a href="#appointment">Appointment</a></li> -->
 
                 <li><a href="#contact">Contact</a></li>
 
