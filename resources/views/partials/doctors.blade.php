@@ -20,9 +20,9 @@
 
         </div>
 
-        <div class="doctor-grid">
+        <!-- <div class="doctor-grid">
 
-            <!-- Doctor -->
+        
 
             <div class="doctor-card">
 
@@ -66,7 +66,7 @@
 
             </div>
 
-            <!-- Doctor -->
+         
 
             <div class="doctor-card">
 
@@ -111,7 +111,7 @@
 
             </div>
 
-            <!-- Doctor -->
+        
 
             <div class="doctor-card">
 
@@ -156,7 +156,7 @@
 
             </div>
 
-        </div>
+        </div> -->
 
     </div>
 

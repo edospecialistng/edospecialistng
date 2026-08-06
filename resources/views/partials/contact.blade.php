@@ -45,23 +45,7 @@
 
                 </div>
 
-                <div class="contact-card">
-
-                    <i class="fa-solid fa-phone"></i>
-
-                    <div>
-
-                        <h3>Call Us</h3>
-
-                        <p>
-
-                            +234 803 123 4567
-
-                        </p>
-
-                    </div>
-
-                </div>
+               
 
                 <div class="contact-card">
 
@@ -73,7 +57,7 @@
 
                         <p>
 
-                            info@edospecialisthospital.ng
+                            info@edospecialisthospitalng.com
 
                         </p>
 
